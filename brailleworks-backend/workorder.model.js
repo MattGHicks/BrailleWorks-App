@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 let WorkOrder = new Schema({
     workorder_po: {
-        type: String
+        type: Number
     },
     workorder_name: {
         type: String

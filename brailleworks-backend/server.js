@@ -18,7 +18,6 @@ connection.once('open', function() {
     console.log("MongoDB database connection established successfully");
 })
 
-var mysort = { workorder_po: 1 };
 
 workorderRoutes.route('/').get(function(req, res) {
     WorkOrder.find(function(err, workorders) {
@@ -27,7 +26,7 @@ workorderRoutes.route('/').get(function(req, res) {
         } else {
             res.json(workorders);
         }
-    });
+    }).sort({ workorder_po: -1 });
 });
 
 workorderRoutes.route('/:id').get(function(req, res) {
