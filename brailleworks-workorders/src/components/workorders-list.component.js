@@ -1,26 +1,6 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
-
-
-
-
-const WorkOrder = props => (
-    <tr>
-        <td className={props.workorder.workorder_completed ? 'completed' : ''}>{props.workorder.workorder_po}</td>
-        <td className={props.workorder.workorder_completed ? 'completed' : ''}>{props.workorder.workorder_name}</td>
-        <td className={props.workorder.workorder_completed ? 'completed' : ''}>{props.workorder.workorder_status}</td>
-        <td className={props.workorder.workorder_completed ? 'completed' : ''}>{props.workorder.workorder_shippingFrom}</td>
-        <td className={props.workorder.workorder_completed ? 'completed' : ''}>{props.workorder.workorder_completionDate}</td>
-        <td>
-            <Link className="btn btn-sm btn-primary" to={"/edit/"+props.workorder._id}>Edit</Link>
-            <button className="btn btn-sm btn-danger" to={"/"+props.workorder._id}>Remove</button>
-            <a className={props.workorder.workorder_completed ? 'btn btn-sm btn-info' : 'invisible'} href={"https://tools.usps.com/go/TrackConfirmAction?tRef=fullpage&tLc=2&text28777=&tLabels="+props.workorder.workorder_tracking+"%2C" } target="_blank">Tracking</a>
-
-        </td>
-    </tr>
-);
-
+import TableRow from './TableRow';
 
 export default class WorkOrdersList extends Component {
 
@@ -49,14 +29,11 @@ export default class WorkOrdersList extends Component {
         })   
     }
 
-
     workorderList() {
         return this.state.workorders.map(function(currentWorkOrder, i) {
-            return <WorkOrder workorder={currentWorkOrder} key={i} />;
+            return <TableRow workorder={currentWorkOrder} key={i} />;
         });
     }
-
-    
 
     render() {
         return (
@@ -66,7 +43,6 @@ export default class WorkOrdersList extends Component {
                     <thead>
                         <tr>
                             <th>Job ID</th>
-                            <th>Name</th>
                             <th>Status</th>
                             <th>Shipping From</th>
                             <th>Completion/Ship Date</th>
