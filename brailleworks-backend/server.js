@@ -69,6 +69,12 @@ workorderRoutes.route('/update/:id').post(function(req, res) {
     });
 });
 
+workorderRoutes.route('/:id').delete(function(req, res) {
+        WorkOrder.findById(req.params.id)
+        .then(workorder => workorder.remove().then(() => res.json({ success: true })))
+        .catch(err => res.status(404).json({ success: false }));           
+});
+
 app.use('/workorders', workorderRoutes);
 
 app.listen(PORT, function() {
