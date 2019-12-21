@@ -26,7 +26,7 @@ workorderRoutes.route('/').get(function(req, res) {
         } else {
             res.json(workorders);
         }
-    }).sort({ workorder_po: -1 });
+    }).sort({ workorder_completionDate: 1 });
 });
 
 workorderRoutes.route('/:id').get(function(req, res) {

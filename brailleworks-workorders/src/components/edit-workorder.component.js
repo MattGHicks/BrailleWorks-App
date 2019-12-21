@@ -6,10 +6,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import Grid from '@material-ui/core/Grid';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormLabel from '@material-ui/core/FormLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import SaveIcon from '@material-ui/icons/Save';
 import Button from '@material-ui/core/Button';
@@ -131,8 +128,8 @@ export default class EditWorkOrder extends Component {
                 <form width="50%" onSubmit={this.onSubmit}>
 
                     <Grid container justify="center">
-                        <TextField style = {{width: 100}} margin="normal" required="true" id="standard-basic" label="Job ID" value={this.state.workorder_po} onChange={this.onChangeWorkOrderPO} />
-                        <TextField style = {{width: 300}} margin="normal" id="standard-basic" label="Name" value={this.state.workorder_name} onChange={this.onChangeWorkOrderName} />           
+                        <TextField style = {{width: 100}} margin="normal" required label="Job ID" value={this.state.workorder_po} onChange={this.onChangeWorkOrderPO} />
+                        <TextField style = {{width: 300}} margin="normal" label="Name" value={this.state.workorder_name} onChange={this.onChangeWorkOrderName} />           
                     </Grid> <br/><br/>
 
                     <Grid container justify="center">
@@ -155,24 +152,17 @@ export default class EditWorkOrder extends Component {
                     </Grid> <br/><br/>
 
                     <Grid container justify="center">
-                        <FormControl component="fieldset">
-                            <FormLabel component="legend">Shipping From</FormLabel>
-                            <RadioGroup aria-label="position" name="shippingFromOptions" value={this.state.workorder_shippingFrom} onChange={this.onChangeWorkOrderShippingFrom} row>
-                                <FormControlLabel
-                                    value="MMP"
-                                    control={<Radio color="primary" />}
-                                    label="MinuteMan Press"
-                                    labelPlacement="start"
-                                    checked={this.state.workorder_shippingFrom==='MMP'}
-                                />
-                                <FormControlLabel
-                                    value="Brailleworks"
-                                    control={<Radio color="primary" />}
-                                    label="Braille Works"
-                                    labelPlacement="start"
-                                    checked={this.state.workorder_shippingFrom==='Brailleworks'}
-                                />
-                            </RadioGroup>
+                        <FormControl style = {{width: 400}}>
+                            <InputLabel>Shipping</InputLabel>
+                                <Select
+                                    native
+                                    value={this.state.workorder_shippingFrom}
+                                    onChange={this.onChangeWorkOrderShippingFrom}
+                                >
+                                    <option value={"No Shipping"} >No Shipping</option>
+                                    <option value={"MMP"}>Minuteman Press</option>
+                                    <option value={"Braille Works"}>Braille Works</option>
+                                </Select>
                         </FormControl>
                     </Grid> <br/><br/>
                     
@@ -190,12 +180,11 @@ export default class EditWorkOrder extends Component {
                     </Grid>
 
                     <Grid container justify="center">
-                        <TextField style = {{width: 400}} margin="normal" id="standard-basic" label="Job ID" value={this.state.workorder_tracking} onChange={this.onChangeWorkOrderTracking} />
+                        <TextField style = {{width: 400}} margin="normal" id="standard-basic" label="Tracking #" value={this.state.workorder_tracking} onChange={this.onChangeWorkOrderTracking} />
                     </Grid> <br/><br/>
                     
                     <Grid container justify="center">
                         <FormControlLabel
-                            value="start"
                             control={<Checkbox color="primary" />}
                             label="Completed"
                             labelPlacement="start"

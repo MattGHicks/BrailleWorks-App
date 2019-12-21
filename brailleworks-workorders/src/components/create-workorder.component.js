@@ -1,5 +1,13 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
+import InputLabel from '@material-ui/core/InputLabel';
+import Select from '@material-ui/core/Select';
+import FormControl from '@material-ui/core/FormControl';
+import Grid from '@material-ui/core/Grid';
+import SaveIcon from '@material-ui/icons/Save';
+import Button from '@material-ui/core/Button';
 
 export default class CreateWorkOrder extends Component {
 
@@ -98,70 +106,77 @@ export default class CreateWorkOrder extends Component {
 
     render() {
         return (
-            <div style={{marginTop: 20}}>
-                <h3>Create New WorkOrder</h3>
-                <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                        <label>Job ID: </label>
-                        <input  type="text"
-                                className="form-control"
-                                value={this.state.workorder_po}
-                                onChange={this.onChangeWorkOrderPO}
-                                />
-                    </div>
-                    <div className="form-group">
-                        <label>Name: </label>
-                        <input  type="text"
-                                className="form-control"
-                                value={this.state.workorder_name}
-                                onChange={this.onChangeWorkOrderName}
-                                />
-                    </div>
-                    <div className="form-group">
-                        <label>Status: </label>
-                        <input  type="text"
-                                className="form-control"
+            <div>
+                <Typography variant="h5" color="primary" align="center" style={{fontWeight: 900}}>Create Work Order</Typography>
+
+
+                <form width="50%" onSubmit={this.onSubmit}>
+                <Grid container justify="center">
+                        <TextField style = {{width: 100}} margin="normal" required label="Job ID" value={this.state.workorder_po} onChange={this.onChangeWorkOrderPO} />
+                        <TextField style = {{width: 300}} margin="normal" required label="Name" value={this.state.workorder_name} onChange={this.onChangeWorkOrderName} />           
+                    </Grid> <br/><br/>
+
+                    <Grid container justify="center">
+                        <FormControl style = {{width: 400}}>
+                            <InputLabel required>Status</InputLabel>
+                                <Select
+                                native
                                 value={this.state.workorder_status}
                                 onChange={this.onChangeWorkOrderStatus}
-                                />
-                    </div>
-                    <div className="form-group">
-                        <label>Shipping From: </label><br/>
-                        <div className="form-check form-check-inline">
-                            <input  className="form-check-input"
-                                    type="radio"
-                                    name="shippingFromOptions"
-                                    id="shippingFromMinuteMan"
-                                    value="MMP"
-                                    checked={this.state.workorder_shippingFrom==='MMP'}
+                                required
+                                >
+                            <option value="" />
+                            <option value={"Proofing"}>Proofing</option>
+                            <option value={"Print Production"}>Print Production</option>
+                            <option value={"Embossing"}>Embossing</option>
+                            <option value={"Finishing"}>Finishing</option>
+                            <option value={"Shipped"}>Shipped</option>
+                            <option value={"Delivered to BW"}>Delivered to BW</option>
+                            </Select>
+                        </FormControl>
+                    </Grid> <br/><br/>
+
+                    <Grid container justify="center">
+
+
+
+
+                        <FormControl style = {{width: 400}}>
+                            <InputLabel required>Shipping From</InputLabel>
+                                <Select
+                                    native
+                                    value={this.state.workorder_shippingFrom}
                                     onChange={this.onChangeWorkOrderShippingFrom}
-                                    />
-                            <label className="form-check-label">MMP</label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                            <input  className="form-check-input"
-                                    type="radio"
-                                    name="shippingFromOptions"
-                                    id="shippingFromBrailleworks"
-                                    value="Brailleworks"
-                                    checked={this.state.workorder_shippingFrom==='Brailleworks'}
-                                    onChange={this.onChangeWorkOrderShippingFrom}
-                                    />
-                            <label className="form-check-label">Brailleworks</label>
-                        </div>
-                    </div>
-                    <div className="form-group">
-                        <label>Completion Date: </label>
-                        <input  type="text"
-                                className="form-control"
-                                value={this.state.workorder_completionDate}
-                                onChange={this.onChangeWorkOrderCompletionDate}
-                                />
-                    </div>
+                                    required
+                                >
+                                    <option value="" />
+                                    <option value={"No Shipping"}>No Shipping</option>
+                                    <option value={"MMP"}>Minuteman Press</option>
+                                    <option value={"Brailleworks"}>Braille Works</option>
+                                </Select>
+                        </FormControl>
+
+
+
+                    </Grid> <br/><br/>
                     
-                    <div className="form-group">
-                        <input type="submit" value="Create WorkOrder" className="btn btn-primary" />
-                    </div>
+                    <Grid container justify="center">
+                        <TextField style = {{width: 400}}
+                            label="Completion / Ship Date"
+                            type="date"
+                            value={this.state.workorder_completionDate}
+                            onChange={this.onChangeWorkOrderCompletionDate}
+                            required
+                            InputLabelProps={{
+                            shrink: true                        
+                            }}
+                            >
+                        </TextField>
+                    </Grid><br/><br/>
+                    
+                   <Grid container justify="center">
+                        <Button size="large" variant="contained" color="primary" startIcon={<SaveIcon />} type="submit">Save</Button>
+                    </Grid>
                 </form>
             </div>
         )
