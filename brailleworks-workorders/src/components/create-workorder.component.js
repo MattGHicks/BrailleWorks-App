@@ -83,6 +83,8 @@ export default class CreateWorkOrder extends Component {
         axios.post('http://matthicksdev.com:4000/workorders/add', newWorkOrder)
             .then(res => console.log(res.data));
 
+        this.props.history.push('/');
+
         this.setState({
             workorder_po: '',
             workorder_name: '',

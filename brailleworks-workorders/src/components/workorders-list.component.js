@@ -60,7 +60,7 @@ export default class WorkOrdersList extends Component {
                                         <TableCell style={{fontWeight: 800}}>Name</TableCell>
                                         <TableCell style={{fontWeight: 800}} align="right">Status</TableCell>
                                         <TableCell style={{fontWeight: 800}} align="right">Shipping From</TableCell>
-                                        <TableCell style={{fontWeight: 800}} align="right">Completion/Ship Date</TableCell>
+                                        <TableCell style={{fontWeight: 800}} align="right">YYYY-MM-DD</TableCell>
                                         <TableCell></TableCell>
                                 </TableRow>
                             </TableHead>

@@ -1,5 +1,21 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
+import InputLabel from '@material-ui/core/InputLabel';
+import Select from '@material-ui/core/Select';
+import FormControl from '@material-ui/core/FormControl';
+import Grid from '@material-ui/core/Grid';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormLabel from '@material-ui/core/FormLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import SaveIcon from '@material-ui/icons/Save';
+import Button from '@material-ui/core/Button';
+
+
+
 
 export default class EditWorkOrder extends Component {
 
@@ -103,99 +119,97 @@ export default class EditWorkOrder extends Component {
 
         this.props.history.push('/');
     }
+    
 
     render() {
+
+        
         return (
             <div>
-                <h3>Update WorkOrder</h3>
-                <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                        <label>Job ID: </label>
-                        <input  type="text"
-                                className="form-control"
-                                value={this.state.workorder_po}
-                                onChange={this.onChangeWorkOrderPO}
-                                />
-                    </div>
-                    <div className="form-group">
-                        <label>Name: </label>
-                        <input  type="text"
-                                className="form-control"
-                                value={this.state.workorder_name}
-                                onChange={this.onChangeWorkOrderName}
-                                />
-                    </div>
-                    <div className="form-group">
-                        <label>Status: </label>
-                        <input  type="text"
-                                className="form-control"
+                
+                <Typography variant="h5" color="primary" align="center" style={{fontWeight: 900}}>Edit Work Order</Typography>
+                <form width="50%" onSubmit={this.onSubmit}>
+
+                    <Grid container justify="center">
+                        <TextField style = {{width: 100}} margin="normal" required="true" id="standard-basic" label="Job ID" value={this.state.workorder_po} onChange={this.onChangeWorkOrderPO} />
+                        <TextField style = {{width: 300}} margin="normal" id="standard-basic" label="Name" value={this.state.workorder_name} onChange={this.onChangeWorkOrderName} />           
+                    </Grid> <br/><br/>
+
+                    <Grid container justify="center">
+                        <FormControl style = {{width: 400}}>
+                            <InputLabel htmlFor="age-native-simple">Status</InputLabel>
+                                <Select
+                                native
                                 value={this.state.workorder_status}
                                 onChange={this.onChangeWorkOrderStatus}
-                                />
-                    </div>
-                    <div className="form-group">
-                        <label>Shipping From:</label><br/>
-                        <div className="form-check form-check-inline">
-                            <input  className="form-check-input"
-                                    type="radio"
-                                    name="shippingFromOptions"
-                                    id="shippingFromMinuteMan"
+                                >
+                            <option value="" />
+                            <option value={"Proofing"}>Proofing</option>
+                            <option value={"Print Production"}>Print Production</option>
+                            <option value={"Embossing"}>Embossing</option>
+                            <option value={"Finishing"}>Finishing</option>
+                            <option value={"Shipped"}>Shipped</option>
+                            <option value={"Delivered to BW"}>Delivered to BW</option>
+                            </Select>
+                        </FormControl>
+                    </Grid> <br/><br/>
+
+                    <Grid container justify="center">
+                        <FormControl component="fieldset">
+                            <FormLabel component="legend">Shipping From</FormLabel>
+                            <RadioGroup aria-label="position" name="shippingFromOptions" value={this.state.workorder_shippingFrom} onChange={this.onChangeWorkOrderShippingFrom} row>
+                                <FormControlLabel
                                     value="MMP"
+                                    control={<Radio color="primary" />}
+                                    label="MinuteMan Press"
+                                    labelPlacement="start"
                                     checked={this.state.workorder_shippingFrom==='MMP'}
-                                    onChange={this.onChangeWorkOrderShippingFrom}
-                                    />
-                            <label className="form-check-label">MMP</label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                            <input  className="form-check-input"
-                                    type="radio"
-                                    name="shippingFromOptions"
-                                    id="shippingFromBrailleworks"
+                                />
+                                <FormControlLabel
                                     value="Brailleworks"
+                                    control={<Radio color="primary" />}
+                                    label="Braille Works"
+                                    labelPlacement="start"
                                     checked={this.state.workorder_shippingFrom==='Brailleworks'}
-                                    onChange={this.onChangeWorkOrderShippingFrom}
-                                    />
-                            <label className="form-check-label">Brailleworks</label>
-                        </div>
-
-                        <br/><br/>
-                        <div className="form-group">
-                        <label>Completion / Ship Date: </label>
-                        <input  type="text"
-                                className="form-control"
-                                value={this.state.workorder_completionDate}
-                                onChange={this.onChangeWorkOrderCompletionDate}
                                 />
-                        </div>
+                            </RadioGroup>
+                        </FormControl>
+                    </Grid> <br/><br/>
+                    
+                    <Grid container justify="center">
+                        <TextField style = {{width: 400}}
+                            label="Completion / Ship Date"
+                            type="date"
+                            value={this.state.workorder_completionDate}
+                            onChange={this.onChangeWorkOrderCompletionDate}
+                            InputLabelProps={{
+                            shrink: true                        
+                            }}
+                            >
+                        </TextField>
+                    </Grid>
 
-                        <div className="form-check">
-                            <input  type="checkbox"
-                                    className="form-check-input"
-                                    id="completedCheckbox"
-                                    name="completedCheckbox"
-                                    onChange={this.onChangeWorkOrderCompleted}
-                                    checked={this.state.workorder_completed}
-                                    value={this.state.workorder_completed}
-                                    />
-                            <label className="form-check-label" htmlFor="completedCheckbox">
-                                Completed
-                            </label>
-                        </div>
-                        <br/>
-                        <div className="form-group">
-                        <label>Tracking ID: </label>
-                        <input  type="text"
-                                className="form-control"
-                                value={this.state.workorder_tracking}
-                                onChange={this.onChangeWorkOrderTracking}
-                                />
-                        </div>
+                    <Grid container justify="center">
+                        <TextField style = {{width: 400}} margin="normal" id="standard-basic" label="Job ID" value={this.state.workorder_tracking} onChange={this.onChangeWorkOrderTracking} />
+                    </Grid> <br/><br/>
+                    
+                    <Grid container justify="center">
+                        <FormControlLabel
+                            value="start"
+                            control={<Checkbox color="primary" />}
+                            label="Completed"
+                            labelPlacement="start"
+                            id="completedCheckbox"
+                            name="completedCheckbox"
+                            onChange={this.onChangeWorkOrderCompleted}
+                            checked={this.state.workorder_completed}
+                            value={this.state.workorder_completed}
+                        />
+                    </Grid> <br/><br/>
 
-                        <br/>
-                        <div className="form-group">
-                            <input type="submit" value="Update WorkOrder" className="btn btn-primary" />
-                        </div>
-                    </div>
+                    <Grid container justify="center">
+                        <Button size="large" variant="contained" color="primary" startIcon={<SaveIcon />} type="submit">Save</Button>
+                    </Grid>
                 </form>
             </div>
         )
