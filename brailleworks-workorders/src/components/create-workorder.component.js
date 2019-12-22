@@ -126,6 +126,7 @@ export default class CreateWorkOrder extends Component {
                                 required
                                 >
                             <option value="" />
+                            <option value={"On Hold"}>On Hold</option>
                             <option value={"Proofing"}>Proofing</option>
                             <option value={"Print Production"}>Print Production</option>
                             <option value={"Embossing"}>Embossing</option>

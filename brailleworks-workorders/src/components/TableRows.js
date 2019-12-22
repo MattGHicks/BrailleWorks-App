@@ -34,13 +34,13 @@ class TableRows extends Component {
             <TableCell className={this.props.workorder.workorder_completed ? 'completed' : ''}>{this.props.workorder.workorder_name}</TableCell>
             <TableCell align="right" className={this.props.workorder.workorder_completed ? 'completed' : ''}>{this.props.workorder.workorder_status}</TableCell>
             <TableCell align="right" className={this.props.workorder.workorder_completed ? 'completed' : ''}>{this.props.workorder.workorder_shippingFrom}</TableCell>
-            <TableCell align="right" className={this.props.workorder.workorder_completed ? 'completed' : ''}>{this.props.workorder.workorder_completionDate}</TableCell>
-            <TableCell>
+            <TableCell style={{fontWeight: 800}} align="right" className={this.props.workorder.workorder_completed ? 'completed' : ''}>{this.props.workorder.workorder_completionDate}</TableCell>
+            <TableCell >
                 <Button size="small" variant="contained" color="primary" startIcon={<EditIcon />} href={"/edit/"+this.props.workorder._id}>Edit</Button>
                   
                 <Button style={{ marginLeft: 10 }} size="small" variant="contained" color="secondary" startIcon={<DeleteIcon />} onClick={this.delete}>Delete</Button>     
 
-                <Button style={{ marginLeft: 10 }} size="small" variant="contained" color="default" startIcon={<OpenInNewIcon />} className={this.props.workorder.workorder_tracking ? '' : 'invisible'} href={"https://tools.usps.com/go/TrackConfirmAction?tRef=fullpage&tLc=2&text28777=&tLabels="+this.props.workorder.workorder_tracking+"%2C" } target="_blank">Tracking</Button>
+                <Button style={{ marginLeft: 10 }} size="small" variant="contained" color="default" startIcon={<OpenInNewIcon />} className={this.props.workorder.workorder_tracking ? '' : 'invisible'} href={"https://tools.usps.com/go/TrackConfirmAction?tRef=fullpage&tLc=2&text28777=&tLabels="+this.props.workorder.workorder_tracking+"%2C" } target="_blank">Track</Button>
             </TableCell>
         </TableRow>
 

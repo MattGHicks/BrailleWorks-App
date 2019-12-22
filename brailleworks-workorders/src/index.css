@@ -19,7 +19,10 @@ code {
 }
 
 .completed {
-  background-color: rgb(39, 189, 72);
+  color: white;
+  font-weight: 800;
+  background-color: rgb(156, 156, 156);
+  
 }
 
 .btn-danger {

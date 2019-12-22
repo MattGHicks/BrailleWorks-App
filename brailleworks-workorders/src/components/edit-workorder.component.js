@@ -141,6 +141,7 @@ export default class EditWorkOrder extends Component {
                                 onChange={this.onChangeWorkOrderStatus}
                                 >
                             <option value="" />
+                            <option value={"On Hold"}>On Hold</option>
                             <option value={"Proofing"}>Proofing</option>
                             <option value={"Print Production"}>Print Production</option>
                             <option value={"Embossing"}>Embossing</option>
