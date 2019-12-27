@@ -70,7 +70,7 @@ export default class WorkOrdersList extends Component {
                             </TableBody>
                         </Table>
                     </TableContainer>
-                </Grid>  
+                </Grid><br/><br/><br/><br/><br/>  
             </div>
         )
     }
