@@ -154,7 +154,7 @@ export default class CreateWorkOrder extends Component {
                                     <option value="" />
                                     <option value={"No Shipping"}>No Shipping</option>
                                     <option value={"MMP"}>Minuteman Press</option>
-                                    <option value={"Brailleworks"}>Braille Works</option>
+                                    <option value={"Braille Works"}>Braille Works</option>
                                 </Select>
                         </FormControl>
 
