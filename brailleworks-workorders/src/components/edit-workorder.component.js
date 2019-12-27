@@ -147,6 +147,7 @@ export default class EditWorkOrder extends Component {
                             <option value={"Embossing"}>Embossing</option>
                             <option value={"Finishing"}>Finishing</option>
                             <option value={"Shipped"}>Shipped</option>
+                            <option value={"Delivery Pending"}>Delivery Pending</option>
                             <option value={"Delivered to BW"}>Delivered to BW</option>
                             </Select>
                         </FormControl>
